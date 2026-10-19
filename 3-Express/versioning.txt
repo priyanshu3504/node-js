@@ -1,0 +1,28 @@
+--- package VERSION ---
+
+"express":"^4.18.2"
+
+-- 3rd one (2) : minor fixes (optional update) do not break your code
+
+-- 2nd one (18) : Recommended bug fix (security fix) 
+
+-- 1st one (4) : major release
+                    -- express code written in 4th version may no run (break) in 5th version
+
+-- ^ : compatible with version - change every bit except major release
+        ^4.18.2
+        ^4.18.3
+        ^4.18.5
+        ^4.19.0
+        ^4.19.9
+        ^4.20.0
+        ^5.0.0   WRONG
+
+-- ~ : Approximate equivalent to version - only change 3rd bit of versioning
+        ~4.18.2
+        ~4.18.3
+        ~4.18.4
+        ~4.18.5
+        ~4.18.6
+        ~4.18.7
+        ~4.19.7  WRONG
