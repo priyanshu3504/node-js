@@ -1,0 +1,22 @@
+{
+  "name": "2-url",
+  "version": "1.0.0",
+  "description": "nodejs urls or paths",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.8",
+    "url": "^0.11.4"
+  }
+}
