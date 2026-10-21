@@ -1,0 +1,15 @@
+REST API - JSON 
+
+GET /users - HTML document render
+GET /api/users - list all users JSON
+GET /api/users/id - get user with given id 
+
+POST /api/users - create new user
+
+PATCH /api/users/id - edit user with given id
+
+DELETE /api/users/id - delete user with given id
+
+
+
+// mockaroo.com : for fake data generation - testing purpose
