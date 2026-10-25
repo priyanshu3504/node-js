@@ -5,10 +5,29 @@ const fs = require("fs");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 8080;
+const FILENAME = "log.txt"
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use((req,res,next)=>{
+  let data = `${Date.now() } | ${req.method} | ${req.url}\n`;
+  fs.appendFile(FILENAME, data, (err)=>{
+    if(err){
+      return res.status(500).json({
+        message : "Internal server error",
+        task : "writing logs"
+      })
+    }
+    next();
+  }) 
+  
+})
+// app.use((req,res,next)=>{
+//   console.log("Hello from middleware 2.");
+//   next();
+// })
 
 app.get("/users", (req, res) => {
   const html = `

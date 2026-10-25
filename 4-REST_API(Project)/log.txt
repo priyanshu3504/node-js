@@ -1,0 +1,5 @@
+1792587959747 | GET | /api/users/
+1792587964575 | GET | /api/users/1002
+1792587969989 | POST | /api/users
+1792587974236 | PATCH | /api/users/1002
+1792587977275 | DELETE | /api/users/1002
