@@ -31,3 +31,15 @@
 1792913469703 | DELETE | /api/users/6adda8dad88816c20925c008
 1792913473257 | GET | /api/users/6adda8dad88816c20925c008
 1792913479296 | GET | /api/users/
+1792920266766 | GET | /api/users/
+1792921683659 | GET | /api/users/6addac74fce6b06413264473
+1792922261079 | GET | /api/users/
+1792922278602 | GET | /api/users/
+1792922300214 | GET | /api/users/
+1792922307086 | GET | /api/users/
+1792922566278 | POST | /api/users
+1792922571493 | GET | /api/users/
+1792922757352 | GET | /api/users/6addd3c63f294b142e21de38
+1792922957337 | PATCH | /api/users/6addd3c63f294b142e21de38
+1792922964942 | DELETE | /api/users/6addd3c63f294b142e21de38
+1792922968469 | GET | /api/users/6addd3c63f294b142e21de38
