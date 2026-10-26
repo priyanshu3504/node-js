@@ -1,0 +1,14 @@
+--- URL - Shortner ---
+(- like bitly)
+
+design a url shortner service that takes a valid url and returns a shortened url redirecting the user to the previously provided url
+
+Also, keep track of the total visits/clicks on the URL.
+
+Routes :
+
+POST /url - Generate a new short url and return the shortened url in the format example.com/random-id
+
+GET /:id - Redirect the user to the original URL
+
+GET /url/analytics/:id - return the clicks for the provided short id
