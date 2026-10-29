@@ -1,9 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const ejs = require("ejs");
+const cookieParser = require("cookie-parser");
 const connectDB = require("./db.config.js");
-const url_route = require("./routes/url.route.js")
 const URL = require("./models/url.model.js")
+const {restrictToLoggedInUserOnly} = require("./middlewares/auth.middleware.js")
+
+// all routes
+const urlRoute = require("./routes/url.route.js")
+const static_route = require("./routes/staticRouter.js")
+const userRoute = require("./routes/user.route.js")
 
 require("dotenv").config();
 
@@ -15,16 +21,14 @@ connectDB(mongo_url);
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
+app.use(cookieParser());
 app.set("view engine", "ejs")
 
-app.get("/test",async (req,res)=>{
-    const allURLs = await URL.find({})
-    return res.status(200).render("home.view.ejs",{
-        urls:allURLs,
-    })
-})
 
-app.use("/api/urls",url_route)
+
+app.use("/api/urls",restrictToLoggedInUserOnly,urlRoute)
+app.use("/users",userRoute)
+app.use("/",static_route)
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on http://localhost:${PORT}`);

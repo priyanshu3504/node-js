@@ -1,14 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page</title>
-</head>
-<body>
-    <h1>Hello from Server</h1>
-    <% urls.forEach(url => { %>
-        <li><%= url.shortID %> - <%= url.redirect_url %> - <%= url.visit_history.length %></li>
-    <% }) %>
-</body>
+  </head>
+  <body>
+    <h1>URL Shortner</h1>
+    <div>
+      <form method="POST" action="/api/urls">
+        <label for="redirect_url">Original URL : </label>
+        <input
+          type="text"
+          name="redirect_url"
+          id="redirect_url"
+          placeholder="https://example.com"
+        />
+        <button type="submit">Generate</button>
+      </form>
+    </div>
+    <div>
+      
+      <% if (locals.allurls) { %>
+        <table>
+          <thead>
+            <th>Sr. No.</th>
+            <th>Short ID</th>
+            <th>Redirect URL</th>
+            <th>Clicks</th>
+          </thead>
+          <tbody>
+            <% allurls.forEach((url,index) => { %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= url.shortID %></td>
+                <td><%= url.redirect_url %></td>
+                <td><%= url.visit_history.length %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+       
+      <% } %>
+    </div>
+  </body>
 </html>

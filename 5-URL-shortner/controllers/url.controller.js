@@ -3,6 +3,8 @@ const URL = require("../models/url.model.js")
 
 async function handleGenerateNewShortID(req,res){
     const body = req.body;
+    // console.log("Request body:", req.body);
+    // console.log("Redirect URL:", req.body?.redirect_url);
     if(!body.redirect_url){
         return res.status(400).send("URL is compulsory")
     }
@@ -14,10 +16,14 @@ async function handleGenerateNewShortID(req,res){
         visit_history:[]
     })
 
-    return res.status(201).json({
-        message: "User created successsfully",
-        url: await URL.find({shortID})
-    })
+    // return res.status(201).json({
+    //     message: "User created successsfully",
+    //     url: await URL.findOne({shortID})
+    // })
+    // return res.status(201).render("home.view.ejs",{
+    //     allurls:await URL.find({})
+    // })
+    return res.status(201).redirect("/")
 
 }
 
