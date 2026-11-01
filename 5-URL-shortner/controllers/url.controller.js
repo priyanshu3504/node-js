@@ -8,12 +8,18 @@ async function handleGenerateNewShortID(req,res){
     if(!body.redirect_url){
         return res.status(400).send("URL is compulsory")
     }
+
+    if (!req.user) {
+        return res.redirect("/login");
+    }
+    
     const shortID = nanoid(8);
 
     await URL.create({
         shortID,
         redirect_url:body.redirect_url,
-        visit_history:[]
+        visit_history:[],
+        createdBy:req.user._id
     })
 
     // return res.status(201).json({

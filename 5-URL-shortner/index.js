@@ -4,7 +4,7 @@ const ejs = require("ejs");
 const cookieParser = require("cookie-parser");
 const connectDB = require("./db.config.js");
 const URL = require("./models/url.model.js")
-const {restrictToLoggedInUserOnly} = require("./middlewares/auth.middleware.js")
+const {restrictToLoggedInUserOnly, checkAuth} = require("./middlewares/auth.middleware.js")
 
 // all routes
 const urlRoute = require("./routes/url.route.js")
@@ -26,9 +26,10 @@ app.set("view engine", "ejs")
 
 
 
+
 app.use("/api/urls",restrictToLoggedInUserOnly,urlRoute)
 app.use("/users",userRoute)
-app.use("/",static_route)
+app.use("/",checkAuth,static_route)
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on http://localhost:${PORT}`);
